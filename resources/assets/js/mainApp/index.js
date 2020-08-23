@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
-import LeftMenu from './components/LeftMenu';
-import Messenger from './components/Messenger';
-import SearchHeader from './components/SearchHeader';
-import ComposeSection from './components/ComposeSection';
-import Posts from './components/Posts';
-import LoadingComp from './components/LoadingComp';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import axios from "axios";
+import Home from "./components/Home";
+import Profile from "./components/Profile";
+import LeftMenu from "./components/LeftMenu";
+import Messenger from "./components/Messenger";
+import SearchHeader from "./components/SearchHeader";
+import ComposeSection from "./components/ComposeSection";
+import Posts from "./components/Posts";
+import LoadingComp from "./components/LoadingComp";
 
 class Layout extends Component {
   constructor(props) {
     super();
-    this.state = {
-      name: 'Joe'
-    };
+    this.state = {};
   }
   componentWillMount() {
     const getInitialData = async () => {
       try {
-        const initialData = await axios.get('/api/initialApp');
+        const initialData = await axios.get("/api/initialApp");
 
-        console.log(initialData.data);
+        // console.log(initialData.data);
         this.setState(
           {
-            initialData: initialData.data
+            initialData: initialData.data,
           },
           () => {
-            console.log('this the state=' + this.state);
             console.log(this.state);
           }
         );
@@ -38,38 +38,80 @@ class Layout extends Component {
   }
 
   clickedBtn = () => {
-    console.log('swag');
+    console.log("swag");
   };
   render() {
     return (
-      <div className="app-container home-page">
-        <LoadingComp
-          initialData={
-            this.state.initialData == undefined
-              ? 'loading'
-              : this.state.initialData
-          }
-        />
-        <LeftMenu
-          initialData={
-            this.state.initialData == undefined
-              ? 'loading'
-              : this.state.initialData
-          }
-        />
-        <section id="content-container">
-          <SearchHeader />
-          <div className="content-area">
-            <ComposeSection />
-            <Posts />
-          </div>
-        </section>
-        <Messenger />
-      </div>
+      <Router>
+        <div className="app-container home-page">
+          <LoadingComp
+            initialData={
+              this.state.initialData == undefined
+                ? "loading"
+                : this.state.initialData
+            }
+          />
+          <LeftMenu
+            initialData={
+              this.state.initialData == undefined
+                ? "loading"
+                : this.state.initialData
+            }
+          />
+          <section id="content-container">
+            <SearchHeader />
+            <Route
+              exact
+              path="/"
+              component={(props) => (
+                <Home
+                  routeProps={props}
+                  initialData={
+                    this.state.initialData == undefined
+                      ? "loading"
+                      : this.state.initialData
+                  }
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/profile/:id"
+              component={(props) => (
+                <Profile
+                  routeProps={props}
+                  initialData={
+                    this.state.initialData == undefined
+                      ? "loading"
+                      : this.state.initialData
+                  }
+                />
+              )}
+            />
+            {/* <div className="content-area">
+              <ComposeSection
+                initialData={
+                  this.state.initialData == undefined
+                    ? "loading"
+                    : this.state.initialData
+                }
+              />
+              <Posts
+                initialData={
+                  this.state.initialData == undefined
+                    ? "loading"
+                    : this.state.initialData
+                }
+              />
+            </div> */}
+          </section>
+          <Messenger />
+        </div>
+      </Router>
     );
   }
 }
 
-const app = document.getElementById('app');
+const app = document.getElementById("app");
 
 ReactDOM.render(<Layout />, app);

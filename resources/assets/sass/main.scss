@@ -3,6 +3,7 @@
 @import 'variables';
 @import 'pages/welcome';
 @import 'pages/home';
+@import 'pages/profile';
 @import 'auth/auth';
 
 * {
@@ -16,37 +17,25 @@ body {
   font-family: 'Roboto', sans-serif;
   min-height: 100vh;
   background: rgba(58, 163, 233, 1);
-  background: -moz-linear-gradient(
-    -45deg,
-    rgba(58, 163, 233, 1) 0%,
-    rgba(254, 125, 20, 1) 100%
-  );
-  background: -webkit-gradient(
-    left top,
-    right bottom,
-    color-stop(0%, rgba(58, 163, 233, 1)),
-    color-stop(100%, rgba(254, 125, 20, 1))
-  );
-  background: -webkit-linear-gradient(
-    -45deg,
-    rgba(58, 163, 233, 1) 0%,
-    rgba(254, 125, 20, 1) 100%
-  );
-  background: -o-linear-gradient(
-    -45deg,
-    rgba(58, 163, 233, 1) 0%,
-    rgba(254, 125, 20, 1) 100%
-  );
-  background: -ms-linear-gradient(
-    -45deg,
-    rgba(58, 163, 233, 1) 0%,
-    rgba(254, 125, 20, 1) 100%
-  );
-  background: linear-gradient(
-    135deg,
-    rgba(58, 163, 233, 1) 0%,
-    rgba(254, 125, 20, 1) 100%
-  );
+  background: -moz-linear-gradient(-45deg,
+      rgba(58, 163, 233, 1) 0%,
+      rgba(254, 125, 20, 1) 100%);
+  background: -webkit-gradient(left top,
+      right bottom,
+      color-stop(0%, rgba(58, 163, 233, 1)),
+      color-stop(100%, rgba(254, 125, 20, 1)));
+  background: -webkit-linear-gradient(-45deg,
+      rgba(58, 163, 233, 1) 0%,
+      rgba(254, 125, 20, 1) 100%);
+  background: -o-linear-gradient(-45deg,
+      rgba(58, 163, 233, 1) 0%,
+      rgba(254, 125, 20, 1) 100%);
+  background: -ms-linear-gradient(-45deg,
+      rgba(58, 163, 233, 1) 0%,
+      rgba(254, 125, 20, 1) 100%);
+  background: linear-gradient(135deg,
+      rgba(58, 163, 233, 1) 0%,
+      rgba(254, 125, 20, 1) 100%);
 }
 
 #app {
@@ -111,11 +100,13 @@ textarea {
       display: block;
     }
   }
+
   .form-group {
-    & > .error {
+    &>.error {
       border: 1px solid red;
     }
   }
+
   button {
     cursor: pointer;
     width: 100%;
@@ -126,37 +117,25 @@ textarea {
     border-radius: 4px;
     padding: 10px 0;
     background: rgba(58, 163, 233, 1);
-    background: -moz-linear-gradient(
-      top,
-      rgba(58, 163, 233, 1) 0%,
-      rgba(1, 120, 255, 1) 100%
-    );
-    background: -webkit-gradient(
-      left top,
-      left bottom,
-      color-stop(0%, rgba(58, 163, 233, 1)),
-      color-stop(100%, rgba(1, 120, 255, 1))
-    );
-    background: -webkit-linear-gradient(
-      top,
-      rgba(58, 163, 233, 1) 0%,
-      rgba(1, 120, 255, 1) 100%
-    );
-    background: -o-linear-gradient(
-      top,
-      rgba(58, 163, 233, 1) 0%,
-      rgba(1, 120, 255, 1) 100%
-    );
-    background: -ms-linear-gradient(
-      top,
-      rgba(58, 163, 233, 1) 0%,
-      rgba(1, 120, 255, 1) 100%
-    );
-    background: linear-gradient(
-      to bottom,
-      rgba(58, 163, 233, 1) 0%,
-      rgba(1, 120, 255, 1) 100%
-    );
+    background: -moz-linear-gradient(top,
+        rgba(58, 163, 233, 1) 0%,
+        rgba(1, 120, 255, 1) 100%);
+    background: -webkit-gradient(left top,
+        left bottom,
+        color-stop(0%, rgba(58, 163, 233, 1)),
+        color-stop(100%, rgba(1, 120, 255, 1)));
+    background: -webkit-linear-gradient(top,
+        rgba(58, 163, 233, 1) 0%,
+        rgba(1, 120, 255, 1) 100%);
+    background: -o-linear-gradient(top,
+        rgba(58, 163, 233, 1) 0%,
+        rgba(1, 120, 255, 1) 100%);
+    background: -ms-linear-gradient(top,
+        rgba(58, 163, 233, 1) 0%,
+        rgba(1, 120, 255, 1) 100%);
+    background: linear-gradient(to bottom,
+        rgba(58, 163, 233, 1) 0%,
+        rgba(1, 120, 255, 1) 100%);
   }
 }
 
@@ -171,6 +150,7 @@ textarea {
     padding: 20px;
     z-index: 100;
   }
+
   &.active {
     display: block;
   }
